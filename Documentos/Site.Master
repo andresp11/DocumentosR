@@ -1,0 +1,102 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Documentos.SiteMaster" %>
+
+<!DOCTYPE html>
+<html lang="es">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <title><%: Page.Title %> - Documentos ASP.NET</title>
+    <asp:PlaceHolder runat="server">     
+          <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>  
+    <webopt:BundleReference runat="server" Path="~/Content/css" /> 
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+</head>
+<body>
+    <form runat="server">
+    <asp:ScriptManager runat="server">
+        <Scripts>
+            <%--Para obtener más información sobre cómo agrupar scripts en ScriptManager, consulte http://go.microsoft.com/fwlink/?LinkID=272931&clcid=0x409 --%>
+            <%--Scripts de Framework--%>
+            
+            <asp:ScriptReference Name="MsAjaxBundle" />
+            <asp:ScriptReference Name="jquery" />
+            <asp:ScriptReference Name="jquery.ui.combined" />
+            <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+            <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+            <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+            <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+            <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+            <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+            <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+            <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+            <asp:ScriptReference Name="WebFormsBundle" />
+            <%--Scripts del sitio--%>
+
+        </Scripts>
+    </asp:ScriptManager>
+
+    <header>
+        <div class="content-wrapper">
+            <div class="float-right">
+                <p class="site-title">
+                    <asp:ImageButton ID="Image1" runat="server" Height="66px" ImageUrl="~/Images/logoaecapl.png" onclick="ImageButton1_Click" 
+                    ToolTip="Regresar al menu de inicio" Width="136px" />
+&nbsp;</p>
+            </div>
+            <div class="float-left">
+                        <asp:Label ID="Label1" runat="server" style="font-size: larger" Text="Control de documentos"></asp:Label>
+                <section id="login">
+                </section>
+                <nav>
+                    <ul id="menu">
+                        <li><a runat="server" href="~/">
+                    <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal">
+                        <Items>
+                            <asp:MenuItem Text="Inicio" Value="100">
+                                <asp:MenuItem Text="Salir" Value="110" NavigateUrl="~/Salir.aspx" ToolTip="Salir del sistema"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Registro" Value="200">
+                                <asp:MenuItem NavigateUrl="~/Documentos.aspx" Text="Documentos" Value="210" Enabled="False"></asp:MenuItem>
+                                <asp:MenuItem Text="Usuarios" Value="220" Enabled="False" NavigateUrl="~/Usuario.aspx"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Consulta" Value="300">
+                                <asp:MenuItem NavigateUrl="~/ConsultaDocs.aspx" Text="Documentos" Value="310" Enabled="False"></asp:MenuItem>
+                                <asp:MenuItem Text="Bitacora" Value="320" Enabled="False" NavigateUrl="~/Bitacora.aspx"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Restauración" Value="400">
+                                <asp:MenuItem Text="Confirmación de baja" Value="410" Enabled="False" NavigateUrl="~/Confirma.aspx"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Acerca de" Value="500" NavigateUrl="~/About.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Contactanos" Value="600" NavigateUrl="~/Contact.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Configuración" Value="700">
+                                <asp:MenuItem Text="Perfil" Value="720" Enabled="False" NavigateUrl="~/Perfil.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="Permisos" Value="730" Enabled="False" NavigateUrl="~/Permisos.aspx"></asp:MenuItem>
+                            </asp:MenuItem>
+                        </Items>
+                    </asp:Menu>
+                            </a></li>
+                        <li></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div id="body">
+        <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
+        <section class="content-wrapper main-content clear-fix">
+            <asp:ContentPlaceHolder runat="server" ID="MainContent" />
+        </section>
+    </div>
+    <footer>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p>&copy; <%: DateTime.Now.Year %> - Documentos AE consulting</p>
+            </div>
+        </div>
+    </footer>
+    </form>
+</body>
+</html>
